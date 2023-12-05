@@ -1,0 +1,17 @@
+composer require laravel/breeze --dev
+php artisan breeze:install 
+-- blade yes
+-- darkmode yes
+-- phpunit
+
+php artisan make:seeder UserTableSeeder
+
+php artisan migrate:fresh --seed
+
+php artisan make:view admin/dashboard
+php artisan make:view agent/dashboard
+php artisan make:middleware Role
+
+-- in Kernel add
+protected $middlewareAliases = [
+        'role' => \App\Http\Middleware\Role::class,
